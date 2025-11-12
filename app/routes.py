@@ -23,7 +23,8 @@ def criar_documento(doc: schemas.DocumentoCreate, db: Session = Depends(get_db))
         formato=doc.formato,
         dados_livro=doc.dados_livro,
         telefone_contato=doc.telefone_contato,
-        data=doc.data or None  
+        data=doc.data or None, 
+        justificativa_nao_conclusao=doc.justificativa_nao_conclusao
     )
     db.add(novo_doc)
     db.commit()

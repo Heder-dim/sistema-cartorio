@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.database import Base, engine
 from app import routes
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 Base.metadata.create_all(bind=engine)
 
@@ -16,6 +17,9 @@ app.add_middleware(
 )
 
 app.include_router(routes.router)
+
+# 👇 Serve o front-end buildado (React, por exemplo)
+app.mount("/", StaticFiles(directory="app/frontend", html=True), name="frontend")
 
 @app.get("/")
 def root():

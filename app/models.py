@@ -13,5 +13,6 @@ class Documento(Base):
     formato = Column(String)
     data = Column(Date, nullable=True)
     dados_livro = Column(Text)
+    justificativa_nao_conclusao = Column(Text, nullable=True)  # 👈 novo campo opcional
     telefone_contato = Column(String)
     criado_em = Column(DateTime, default=datetime.utcnow)

@@ -10,6 +10,8 @@ class DocumentoBase(BaseModel):
     dados_livro: Optional[str] = None
     telefone_contato: Optional[str] = None
     data: Optional[date] = None
+    justificativa_nao_conclusao: Optional[str] = None  # 👈 novo campo
+
 class DocumentoCreate(DocumentoBase):
     pass
 
@@ -21,6 +23,7 @@ class DocumentoUpdate(BaseModel):
     dados_livro: Optional[str] = None
     telefone_contato: Optional[str] = None
     data: Optional[date] = None
+    justificativa_nao_conclusao: Optional[str] = None  # 👈 novo campo
 
 class DocumentoOut(DocumentoBase):
     id: int
