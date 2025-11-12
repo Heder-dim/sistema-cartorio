@@ -1,3 +1,15 @@
-fastapi 
-uvicorn 
-pytsqlalchemy
+# --- Framework principal ---
+fastapi==0.115.2
+
+# --- Servidor de desenvolvimento ---
+uvicorn[standard]==0.32.0
+
+# --- Banco de dados ---
+SQLAlchemy==2.0.36
+
+# --- Validação e modelos (Pydantic v2) ---
+pydantic==2.9.2
+pydantic-core==2.23.4
+
+# --- Compatibilidade e utilitários ---
+typing-extensions>=4.8.0

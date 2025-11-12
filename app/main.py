@@ -3,12 +3,10 @@ from app.database import Base, engine
 from app import routes
 from fastapi.middleware.cors import CORSMiddleware
 
-# Cria as tabelas no SQLite
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Sistema de Cartório - API")
+app = FastAPI(title="API Agenda - Documentos")
 
-# Permitir acesso do front-end
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,4 +19,4 @@ app.include_router(routes.router)
 
 @app.get("/")
 def root():
-    return {"mensagem": "API do Sistema de Cartório está ativa!"}
+    return {"mensagem": "API do Sistema de Agenda ativa!"}
