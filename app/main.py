@@ -2,13 +2,12 @@ from fastapi import FastAPI
 from app.database import Base, engine
 from app import routes
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
-# Cria as tabelas no SQLite
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Sistema de Cartório - API")
+app = FastAPI(title="API Agenda - Documentos")
 
-# Permitir acesso do front-end
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,6 +18,9 @@ app.add_middleware(
 
 app.include_router(routes.router)
 
+# 👇 Serve o front-end buildado (React, por exemplo)
+app.mount("/", StaticFiles(directory="app/frontend", html=True), name="frontend")
+
 @app.get("/")
 def root():
-    return {"mensagem": "API do Sistema de Cartório está ativa!"}
+    return {"mensagem": "API do Sistema de Agenda ativa!"}
